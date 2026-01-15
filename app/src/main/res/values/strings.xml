@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Geo Presença</string>
+    <string name="email">Email</string>
+    <string name="senha">Senha</string>
+    <string name="login_do_aluno">Login do Aluno</string>
+    <string name="login_da_institui_o">Login da Instituição</string>
+    <string name="gerar_geoloc">Gerar Geoloc</string>
+    <string name="deslogar">deslogar</string>
+    <string name="checar_lista">Checar Lista</string>
+    <string name="a_lista_ser_exibida_aqui">A lista será exibida aqui...</string>
+    <string name="registrar_sala">Registrar Sala</string>
+    <string name="digite_o_nome_da_sala">Digite o nome da sala</string>
+    <string name="adicionar_sala">Adicionar Sala</string>
+
+</resources>

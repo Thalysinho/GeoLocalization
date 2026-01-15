@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "226121410324",
+    "project_id": "geo-presenca",
+    "storage_bucket": "geo-presenca.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:226121410324:android:63a163885c9d9696ffc401",
+        "android_client_info": {
+          "package_name": "com.example.kotlinandroiduserlocationaddress"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD30ZU64qE7HIs7B9uSxu1Qm3rIwjNHFgs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

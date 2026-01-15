@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/chatgpt_image_10_de_jan__de_2026__14_28_40"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <!-- Título -->
+        <TextView
+            android:id="@+id/tvCreateAccountTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:text="Criar sua conta"
+            android:textColor="@color/background_color"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <!-- Campo de nome -->
+        <EditText
+            android:id="@+id/etName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/bg_input"
+            android:hint="Digite seu nome"
+            android:padding="12dp"
+            android:textColor="#1E5BFF"
+            android:textColorHint="#9CA3AF"
+            android:minHeight="48dp" />
+
+
+        <EditText
+            android:id="@+id/etRA"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/bg_input"
+            android:hint="Digite seu RA"
+            android:inputType="number"
+            android:padding="12dp"
+            android:textColor="#1E5BFF"
+            android:textColorHint="#9CA3AF"
+            android:minHeight="48dp" />
+
+
+        <!-- Campo de email -->
+        <EditText
+            android:id="@+id/etEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/bg_input"
+            android:hint="Digite seu email"
+            android:inputType="textEmailAddress"
+            android:padding="12dp"
+            android:textColor="#1E5BFF"
+            android:textColorHint="#9CA3AF"
+            android:minHeight="48dp" />
+
+        <!-- Campo de senha -->
+
+        <!-- Botão de criar conta -->
+        <EditText
+            android:id="@+id/etPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/bg_input"
+            android:hint="Digite sua senha"
+            android:inputType="textPassword"
+            android:padding="12dp"
+            android:textColor="#1E5BFF"
+            android:textColorHint="#9CA3AF"
+            android:minHeight="48dp" />
+
+
+        <Button
+            android:id="@+id/btnCreateAccount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#060F3A"
+            android:text="Criar Conta"
+            android:textColor="@android:color/white"
+            app:cornerRadius="12dp" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="gone" />
+    </LinearLayout>
+</ScrollView>

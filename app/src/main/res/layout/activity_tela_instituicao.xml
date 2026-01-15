@@ -1,0 +1,111 @@
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/chatgpt_image_10_de_jan__de_2026__14_28_40"
+    tools:context=".Tela_Instituicao">
+
+    <!-- Conteúdo principal -->
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="16dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <!-- Spinner para selecionar a sala -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="4dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/card_background"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:id="@+id/txtSelecionada"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="4dp"
+                        android:text="Selecione uma sala:"
+                        android:textAppearance="?attr/textAppearanceSubtitle1"
+                        android:textColor="@color/white" />
+
+                    <Spinner
+                        android:id="@+id/salasSpinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:backgroundTint="@color/black"
+                        android:minHeight="48dp"
+                        android:padding="4dp"
+                        android:spinnerMode="dropdown" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Card para exibir a lista -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="4dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/card_background"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:id="@+id/txtLista"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="4dp"
+                        android:text="@string/a_lista_ser_exibida_aqui"
+                        android:textAppearance="?attr/textAppearanceBody1"
+                        android:textColor="?attr/colorOnBackground" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Botão estilizado -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnChecar"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#060F3A"
+                android:text="@string/checar_lista"
+                android:textColor="@android:color/white"
+                app:cornerRadius="12dp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Botão Flutuante para adicionar sala -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/FabAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:backgroundTint="@color/background_color"
+        android:contentDescription="@string/adicionar_sala"
+        app:layout_anchor="@id/scrollView2"
+        app:layout_anchorGravity="bottom|end"
+        app:srcCompat="@drawable/baseline_add_24" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

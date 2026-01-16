@@ -75,7 +75,8 @@ class Tela_Registrar_Sala : AppCompatActivity() {
                 // Criar dados da sala
                 val roomData = hashMapOf(
                     "nome" to nomeSala, // Nome fornecido pelo usuário
-                    "localizacao" to geoPoint,
+                    "latitude" to location.latitude,
+                    "longitude" to location.longitude,
                     "criado_em" to currentTime
                 )
 

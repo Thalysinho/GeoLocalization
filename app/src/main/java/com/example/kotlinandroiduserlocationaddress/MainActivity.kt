@@ -9,8 +9,11 @@ import android.location.Location
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.ProgressBar
+import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -30,6 +33,9 @@ class MainActivity : AppCompatActivity() {
     private var btnLogout: Button? = null
     private var txtResult: TextView? = null
     private var progressBar: ProgressBar? = null
+    private lateinit var ddSala: Spinner
+    private val salasList = mutableListOf<Sala>() // Lista de objetos Sala
+    private var salaSelecionada: Sala? = null // Sala atualmente selecionada
 
     private val foregroundLocationPermissions = arrayOf(
         Manifest.permission.ACCESS_FINE_LOCATION,
@@ -54,10 +60,26 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
+        ddSala = findViewById(R.id.ddSala)
         btnGetAddress = findViewById(R.id.btnGetAddress)
         btnLogout = findViewById(R.id.btnDeslogar)
         txtResult = findViewById(R.id.txtResult)
         progressBar = findViewById(R.id.progressBar)
+
+        // Buscar salas do Firestore e preencher o Spinner
+        carregarSalas()
+
+        // Configurar evento do Spinner
+        ddSala.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                salaSelecionada = salasList[position]
+                Toast.makeText(this@MainActivity, "Sala Selecionada: ${salaSelecionada?.nome}", Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                salaSelecionada = null
+            }
+        }
 
         permissionManager = PermissionManager.getInstance(this)
         locationManager = LocationManager.getInstance(this)
@@ -75,6 +97,37 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+    }
+
+    private fun carregarSalas() {
+        db.collection("Salas")
+            .get()
+            .addOnSuccessListener { snapshot ->
+                if (!snapshot.isEmpty) {
+                    salasList.clear()
+                    for (document in snapshot) {
+                        val sala = Sala(
+                            id = document.id,
+                            nome = document.getString("nome") ?: "Sala Desconhecida",
+                            latitude = document.getDouble("latitude") ?: 0.0,
+                            longitude = document.getDouble("longitude") ?: 0.0,
+                            raio = document.getDouble("raio") ?: 20.0
+                        )
+                        salasList.add(sala)
+                    }
+
+                    // Preencher o Spinner com os nomes das salas
+                    val nomesSalas = salasList.map { it.nome }
+                    val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, nomesSalas)
+                    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                    ddSala.adapter = adapter
+                } else {
+                    Toast.makeText(this, "Nenhuma sala encontrada.", Toast.LENGTH_SHORT).show()
+                }
+            }
+            .addOnFailureListener { e ->
+                Toast.makeText(this, "Erro ao carregar salas: ${e.message}", Toast.LENGTH_SHORT).show()
+            }
     }
 
     private fun handleLocationAndSavePresence() {
@@ -124,19 +177,20 @@ class MainActivity : AppCompatActivity() {
 
     private fun checkUserLocation(currentLat: Double, currentLng: Double): Boolean {
         // Latitude central (Unisanta)
-//        val roomLat = -23.96419
+        // val roomLat = -23.96419
+        // val roomLng = -46.32137
 
-//        (casa)
-        val roomLat = -24.2060031
+        // casa
+        // val roomLat = -24.2060031
+        // val roomLng = -46.8345173
 
-        // Longitude central (Unisanta)
-//        val roomLng = -46.32137
-
-//        casa
-        val roomLng = -46.8345173
+        val roomLat = salaSelecionada!!.latitude
+        val roomLng = salaSelecionada!!.longitude
 
         val radius = 20 // Em metros
         val distance = calculateDistance(currentLat, currentLng, roomLat, roomLng)
+
+        Toast.makeText(this@MainActivity, "Distância: ${distance}", Toast.LENGTH_LONG).show()
 
         return distance <= radius
     }

@@ -78,8 +78,8 @@ class Tela_Instituicao : AppCompatActivity() {
                         val sala = Sala(
                             id = document.id,
                             nome = document.getString("nome") ?: "Sala Desconhecida",
-                            latitude = document.getDouble("latitude") ?: 0.0,
-                            longitude = document.getDouble("longitude") ?: 0.0,
+                            latitude = document.getDouble("lat") ?: 0.0,
+                            longitude = document.getDouble("long") ?: 0.0,
                             raio = document.getDouble("raio") ?: 20.0
                         )
                         salasList.add(sala)
